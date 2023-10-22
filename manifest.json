@@ -1,16 +1,34 @@
 {
-    "manifest_version": 2,
- 
-    "name": "Click It", 
-    "description": "My first Chrome extension.",
-    "version": "1.0",
-    "author": "Emad Elmogy",
-    "browser_action": {
-        "default_icon": "icon.png",
-        "default_popup": "popup.html",
-        "default_title": "My custom google Extension"
-    },
-    "permissions": [
-        "activeTab"
-     ]
+  "manifest_version": 2,
+  "name": "My Extension",
+  "version": "1.0",
+  "description": "Adds a logo and chat UI to webpages",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "web_accessible_resources": [
+    "icon.png",
+    "chat.html",
+    "chat.css",
+    "chat.js",
+    "popup.html"
+  ],
+  "background": {
+    "scripts": ["popup.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
 }
+

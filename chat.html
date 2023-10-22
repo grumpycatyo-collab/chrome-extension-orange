@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- <html>
+  <head>
+    <title>Chat Window</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Roboto, sans-serif;
+      }
+      
+      header {
+        background-color: #ffffff;
+        color: #fff;
+        padding: 20px;
+      }
+      
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5vh;
+      }
+      
+      .chat-window {
+        width:600px;
+        height: auto;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      
+      .chat-area {
+        height: 70%;
+        overflow-y: scroll;
+        padding: 20px;
+      }
+      
+      .chat-messages {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .message {
+        margin-bottom: 10px;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      
+      .user-input {
+        display: flex;
+        height:20%;
+        align-items: center;
+        padding: 20px;
+        background-color: #fff;
+      }
+      
+      #message-input {
+        flex-grow: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      
+      #send-button {
+        padding: 8px 16px;
+        margin-left: 10px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+      }
+      
+      #send-button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1></h1>
+    </header>
+    <div class="container">
+      <div class="chat-window">
+        <div class="chat-area" id="chatArea">
+          <div class="chat-messages">
+            <p class="message">Chat content goes here...</p>
+            <p class="message">Chat content goes here...</p>
+            <p class="message">Chat content goes here...</p>
+            <p class="message">Chat content goes here...</p>
+            <p class="message">Chat content goes here...</p>
+            <p class="message">Chat content goes here...</p>
+            <p class="message">Chat content goes here...</p>
+        
+            <p class="message">Chat content goes here...</p>
+      
+            <p class="message">Chat content goes here.Chat content goes here.Chat content goes here.Chat content goes here.Chat content goes here...</p>
+            
+          </div>
+        </div>
+        <div class="user-input">
+          <input id="message-input" type="text">
+          <input id="send-button" type="button" value="Send">
+        </div>
+      </div>
+    </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="style.css">
+	<title>Chatbox</title>
+</head>
+<body>
+
+	<div class="chatbox-wrapper">
+
+		<div class="chatbox-message-wrapper">
+			<div class="chatbox-message-header">
+				<div class="chatbox-message-profile">
+					<img src="512x512bb.jpg" alt="" class="chatbox-message-image">
+					<div>
+						<h4 class="chatbox-message-name">Djingo</h4>
+					</div>
+				</div>
+				<div class="chatbox-message-dropdown">
+					<i class='bx bx-dots-vertical-rounded chatbox-message-dropdown-toggle'></i>
+					<ul class="chatbox-message-dropdown-menu">
+						<li>
+							<a href="#">Search</a>
+						</li>
+						<li>
+							<a href="#">Report</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="chatbox-message-content">
+				<h4 class="chatbox-message-no-message">You don't have message yet!</h4>
+				<!-- <div class="chatbox-message-item sent">
+					<span class="chatbox-message-item-text">
+						Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quod, fugiat?
+					</span>
+					<span class="chatbox-message-item-time">08:30</span>
+				</div>
+				<div class="chatbox-message-item received">
+					<span class="chatbox-message-item-text">
+						Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quod, fugiat?
+					</span>
+					<span class="chatbox-message-item-time">08:30</span>
+				</div> -->
+			</div>
+			<div class="chatbox-message-bottom">
+				<form action="#" class="chatbox-message-form">
+					<textarea rows="1" placeholder="Type message..." class="chatbox-message-input"></textarea>
+					<button type="submit" class="chatbox-message-submit"><i class='bx bx-send' ></i></button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+    
+	<script src="script.js"></script>
+</body>
+</html>
+
+
