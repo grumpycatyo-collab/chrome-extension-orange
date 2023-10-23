@@ -15,7 +15,7 @@ chatUI.style.height = '700px';
 chatUI.style.display = 'none';
 chatUI.style.position = 'fixed';
 chatUI.style.bottom = '0px'; // Adjust this value to position the chat above the icon
-chatUI.style.right = '250px';
+chatUI.style.right = '130px';
 chatUI.style.border = '0';
 chatUI.id = 'myChat';
 document.body.appendChild(chatUI);

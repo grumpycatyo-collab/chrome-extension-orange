@@ -77,28 +77,16 @@ function writeMessage() {
 			<span class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
 		</div>
 	`
+	console.log("writeMessage: ",textarea.value.trim().replace(/\n/g, '<br>\n'))
 	chatboxMessageWrapper.insertAdjacentHTML('beforeend', message)
 	chatboxForm.style.alignItems = 'center'
 	textarea.rows = 1
 	textarea.focus()
-	textarea.value = ''
+	
 	chatboxNoMessage.style.display = 'none'
 	scrollBottom()
 }
 
-function autoReply() {
-	const today = new Date()
-	let message = `
-		<div class="chatbox-message-item received">
-			<span class="chatbox-message-item-text">
-				Thank you for your awesome support!
-			</span>
-			<span class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
-		</div>
-	`
-	chatboxMessageWrapper.insertAdjacentHTML('beforeend', message)
-	scrollBottom()
-}
 
 function scrollBottom() {
 	chatboxMessageWrapper.scrollTo(0, chatboxMessageWrapper.scrollHeight)
@@ -111,41 +99,43 @@ function isValid(value) {
 	return text.length > 0
 }
 
-// function autoReply() {
-// 	const messageInput = document.querySelector('.chatbox-message-input');
-//     const query = messageInput.value;
-//     const history = ''; 
-    
+
+function autoReply() {
+	document.querySelector('.chatbox-message-form').disabled = true;
+	console.log("autoReply: ",textarea.value.trim().replace(/\n/g, '<br>\n'))
+    const query = textarea.value.trim().replace(/\n/g, '<br>\n');
+    const history = ''; 
+    console.log(query);
  
-//     fetch('http://10.8.51.172:8000/predict', {
-//        method: 'POST',
-//        body: JSON.stringify({ query, history }),
-//        headers: { 'Content-Type': 'application/json' }
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//        const today = new Date();
-//        const message = `
-// 		<div class="chatbox-message-item received">
-// 			<span class="chatbox-message-item-text">
-// 				${data.text}
-// 			</span>
-// 			<span class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
-// 		</div>
-// 	`;
-       
-    
-//        messageInput.value = '';
-// 	chatboxMessageWrapper.insertAdjacentHTML('beforeend', message);
-//        scrollBottom();
-//     })
-//     .catch(error => console.error('Error:', error));
-//  }
+    fetch('https://a2b0-195-22-251-59.ngrok-free.app/predict', {
+       method: 'POST',
+       body: JSON.stringify({ query, history }),
+       headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+       const today = new Date();
+       const message = `
+		<div class="chatbox-message-item received">
+			<span class="chatbox-message-item-text">
+				${data.result}
+			</span>
+			<span class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
+		</div>
+	`;
+		textarea.value = '';
+	chatboxMessageWrapper.insertAdjacentHTML('beforeend', message);
+       scrollBottom();
+	   document.querySelector('.chatbox-message-form').disabled = false;
+    })
+    .catch(error => console.error('Error:', error));
+	document.querySelector('.chatbox-message-form').disabled = false
+ }
  
-//  document.querySelector('.chatbox-message-form').addEventListener('submit', function(event) {
-//     event.preventDefault();
-//     autoReply();
-//  });
+ document.querySelector('.chatbox-message-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    // autoReply();
+ });
 
 // function scrollBottom() {
 // 	chatboxMessageWrapper.scrollTo(0, chatboxMessageWrapper.scrollHeight)
